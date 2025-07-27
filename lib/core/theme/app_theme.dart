@@ -1,0 +1,171 @@
+import 'package:flutter/material.dart';
+
+// Light theme (orange, yellow, warm tones)
+final ThemeData lightTheme = ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.light,
+  fontFamily: 'Jost',
+  textTheme: const TextTheme(
+    displayLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.bold),
+    displayMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    displaySmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    headlineLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.bold),
+    headlineMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    headlineSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    titleLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    titleSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodyLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodyMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodySmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    labelLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    labelMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    labelSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+  ),
+  colorScheme: const ColorScheme.light(
+    primary: Color(0xFFFF8C00),
+    onPrimary: Colors.white,
+    secondary: Color(0xFFFFC107),
+    onSecondary: Color(0xFF2D2D2D),
+    surface: Color(0xFFFFFDF7),
+    onSurface: Color(0xFF1C1B1E),
+    surfaceContainer: Color(0xFFFFF8E1),
+    tertiary: Color(0xFFFFE0B2),
+    onTertiary: Color(0xFF2D2D2D),
+    error: Color(0xFFD32F2F),
+    onError: Colors.white,
+    outline: Color(0xFFE0E0E0),
+  ),
+  scaffoldBackgroundColor: const Color(0xFFFFFDF7),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xFFFFFDF7),
+    foregroundColor: Color(0xFF1C1B1E),
+    elevation: 0,
+    surfaceTintColor: Colors.transparent,
+    shadowColor: Colors.transparent,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFFF8C00),
+      foregroundColor: Colors.white,
+      elevation: 2,
+      shadowColor: Colors.black.withValues(alpha: 0.1),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: const Color(0xFFFF8C00),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: const Color(0xFFFFF8E1),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(color: Color(0xFFFF8C00), width: 2),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+  ),
+  cardTheme: CardThemeData(
+    elevation: 1,
+    shadowColor: Colors.black.withValues(alpha: 0.05),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    surfaceTintColor: Colors.transparent,
+  ),
+);
+
+// Dark theme (warm dark with orange/yellow accents)
+final ThemeData darkTheme = ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.dark,
+  fontFamily: 'Jost',
+  textTheme: const TextTheme(
+    displayLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.bold),
+    displayMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    displaySmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    headlineLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.bold),
+    headlineMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    headlineSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    titleLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    titleSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodyLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodyMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    bodySmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    labelLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w500),
+    labelMedium: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+    labelSmall: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w400),
+  ),
+  colorScheme: const ColorScheme.dark(
+    primary: Color(0xFFFFB74D),
+    onPrimary: Color(0xFF2D2D2D),
+    secondary: Color(0xFFFFF176),
+    onSecondary: Color(0xFF2D2D2D),
+    surface: Color(0xFF1A1611),
+    onSurface: Color(0xFFF5F5DC),
+    surfaceContainer: Color(0xFF2D2721),
+    tertiary: Color(0xFFFFCC80),
+    onTertiary: Color(0xFF2D2D2D),
+    error: Color(0xFFFF8A80),
+    onError: Color(0xFF690005),
+    outline: Color(0xFF4A453F),
+  ),
+  scaffoldBackgroundColor: const Color(0xFF1A1611),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xFF1A1611),
+    foregroundColor: Color(0xFFF5F5DC),
+    elevation: 0,
+    surfaceTintColor: Colors.transparent,
+    shadowColor: Colors.transparent,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFFFB74D),
+      foregroundColor: const Color(0xFF2D2D2D),
+      elevation: 2,
+      shadowColor: Colors.black.withValues(alpha: 0.3),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: const Color(0xFFFFB74D),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: const Color(0xFF2D2721),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(color: Color(0xFFFFB74D), width: 2),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+  ),
+  cardTheme: CardThemeData(
+    elevation: 1,
+    shadowColor: Colors.black.withValues(alpha: 0.3),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    surfaceTintColor: Colors.transparent,
+  ),
+);
