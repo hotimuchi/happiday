@@ -170,6 +170,13 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                   context.read<CalendarCubit>().filterEvents(selected);
                 },
 
+                onPageChanged: (focusedDay) {
+                  setState(() {
+                    this.focusedDay = focusedDay;
+                  });
+                  context.read<CalendarCubit>().filterMonthEvents(focusedDay);
+                },
+
                 locale: context.locale.languageCode,
               ),
               Divider(height: 1, color: theme.onSurface.withValues(alpha: 0.1)),

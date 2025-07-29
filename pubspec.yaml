@@ -1,7 +1,7 @@
 name: happiday
 description: "An elegant app for managing and sending personalized birthday greetings, with reminders, customizable templates, and smart notifications."
 publish_to: 'none'
-version: 0.1.0
+version: 0.2.0
 
 environment:
   sdk: ^3.7.2
@@ -45,6 +45,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/logo.png
     - assets/translations/
   fonts:
     - family: Jost

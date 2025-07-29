@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/di/injection_container.dart';
+import '../../../../core/notifications/local_notification_service.dart';
 import '../../domain/repositories/settings_repository.dart';
 import 'settings_card.dart';
 
@@ -88,6 +89,11 @@ class _NotificationTimeCardState extends State<NotificationTimeCard> {
                       setState(() => _selectedTime = tempTime);
                       final repo = sl<SettingsRepository>();
                       await repo.saveNotificationTime(tempTime);
+                      // Пересоздать уведомления для всех дат
+                      final notificationService =
+                          sl<LocalNotificationService>();
+                      await notificationService
+                          .rescheduleAllBirthdayNotifications(tempTime);
                       if (!context.mounted) return;
                       context.pop();
                     },

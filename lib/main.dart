@@ -15,41 +15,48 @@ import 'features/settings/presentation/cubit/delete_birthdays_cubit/delete_birth
 import 'features/settings/presentation/cubit/language_cubit/language_cubit.dart';
 import 'features/settings/presentation/cubit/theme_cubit/theme_cubit.dart';
 import 'happi_day.dart';
+import 'startup_error_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Set preferred orientations to portrait mode only
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-  // Initialize dependency injection
-  await di.init();
-
-  await sl<LocalNotificationService>().initNotification();
-
-  // Initialize EasyLocalization
-  await EasyLocalization.ensureInitialized();
+  String? errorText;
+  try {
+    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    await di.init();
+    await sl<LocalNotificationService>().initNotification();
+    await EasyLocalization.ensureInitialized();
+  } catch (e, s) {
+    errorText = 'Startup error: $e';
+    debugPrint(errorText);
+    debugPrint(s.toString());
+  }
   runApp(
-    EasyLocalization(
-      supportedLocales: [englishLocale, russianLocale],
-      path: 'assets/translations',
-      startLocale: englishLocale,
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => ThemeCubit()),
-          BlocProvider(create: (context) => LanguageCubit()),
-          BlocProvider(
-            create:
-                (context) =>
-                    DeleteBirthdaysCubit(sl<DeleteAllBirthdaysUseCase>()),
+    errorText == null
+        ? EasyLocalization(
+          supportedLocales: [englishLocale, russianLocale],
+          path: 'assets/translations',
+          startLocale: englishLocale,
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => ThemeCubit()),
+              BlocProvider(create: (context) => LanguageCubit()),
+              BlocProvider(
+                create:
+                    (context) =>
+                        DeleteBirthdaysCubit(sl<DeleteAllBirthdaysUseCase>()),
+              ),
+              BlocProvider(
+                create:
+                    (context) => CalendarCubit(sl<GetAllBirthdaysUseCase>()),
+              ),
+              BlocProvider<BirthdaysBloc>(create: (_) => sl<BirthdaysBloc>()),
+            ],
+            child: const HappidayApp(),
           ),
-          BlocProvider(
-            create: (context) => CalendarCubit(sl<GetAllBirthdaysUseCase>()),
-          ),
-          BlocProvider<BirthdaysBloc>(create: (_) => sl<BirthdaysBloc>()),
-        ],
-        child: const HappidayApp(),
-      ),
-    ),
+        )
+        : MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: StartupErrorScreen(errorText: errorText),
+        ),
   );
 }

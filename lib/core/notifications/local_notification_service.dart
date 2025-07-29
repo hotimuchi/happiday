@@ -1,11 +1,29 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:happiday/core/di/injection_container.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:happiday/features/birthdays/domain/repositories/birthday_repository.dart';
 
 class LocalNotificationService {
+  /// Пересоздать уведомления для всех дней с новым временем
+  Future<void> rescheduleAllBirthdayNotifications(TimeOfDay newTime) async {
+    // Получить все дни через репозиторий
+    final repo = sl<BirthdayRepository>();
+    final all = await repo.getAllBirthdays();
+    for (final b in all) {
+      await cancelBirthdayNotifications(b.id);
+      await scheduleBirthdayNotifications(
+        eventId: b.id,
+        name: b.name,
+        date: b.birthday,
+        time: newTime,
+      );
+    }
+  }
+
   /// Планирует два уведомления: за день и в день события
   Future<void> scheduleBirthdayNotifications({
     required String eventId,
