@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Поддержка Happiday / Happiday Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF8C00;
+      --secondary: #FFC107;
+      --bg: #FFFDF7;
+      --surface: #FFF8E1;
+      --text: #1C1B1E;
+      --card: #FFFFFF;
+    }
+    body {
+      font-family: 'Jost', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 420px;
+      margin: 36px auto;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #ff8c0022;
+      padding: 28px 20px 24px 20px;
+    }
+    h1 {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: center;
+      margin: 0 0 18px 0;
+    }
+    .lang-switch {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .lang-switch button {
+      border: none;
+      background: var(--surface);
+      color: var(--primary);
+      padding: 7px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 15px;
+      transition: background 0.15s;
+      outline: none;
+    }
+    .lang-switch button.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      margin-top: 12px;
+      font-size: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 10px;
+      margin-bottom: 4px;
+      box-sizing: border-box;
+      outline: none;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 0 0 0 #FF8C00;
+    }
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    textarea {
+      min-height: 72px;
+      resize: vertical;
+    }
+    .form-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 0;
+      width: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 1px 8px #FF8C0033;
+      transition: background 0.2s;
+    }
+    .form-btn:hover, .form-btn:focus {
+      background: var(--secondary);
+      color: var(--text);
+    }
+    .thanks-block {
+      background: #FFE0B2;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 15px;
+      color: var(--primary);
+      margin-top: 12px;
+      text-align: center;
+      display: none;
+    }
+    .faq-block {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 18px 14px;
+      margin: 28px 0 16px 0;
+      font-size: 14px;
+    }
+    .faq-block h2 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .faq-block ul {
+      padding-left: 16px;
+      margin: 0;
+    }
+    .faq-block li {
+      margin-bottom: 7px;
+    }
+    .contacts {
+      text-align: center;
+      margin: 16px 0 0 0;
+      font-size: 14px;
+      color: #FF8C00;
+    }
+    .contacts a {
+      color: var(--primary);
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 12px 3vw 16px 3vw; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <button id="ruBtn" class="active">Русский</button>
+      <button id="enBtn">English</button>
+    </div>
+    <div id="support-ru">
+      <h1>Поддержка Happiday</h1>
+      <form id="form-ru" action="https://formspree.io/f/mwpqbjjy" method="POST">
+        <label for="email-ru">Ваша почта для ответа</label>
+        <input type="email" id="email-ru" name="email" required autocomplete="email" placeholder="example@gmail.com" maxlength="80">
+        <label for="message-ru">Ваше сообщение</label>
+        <textarea id="message-ru" name="message" required maxlength="800" placeholder="Опишите проблему, отзыв или идею"></textarea>
+        <button type="submit" class="form-btn">Отправить</button>
+      </form>
+      <div class="thanks-block" id="thanks-ru">Спасибо! Ваше сообщение отправлено.</div>
+      <div class="faq-block">
+        <h2>Часто задаваемые вопросы</h2>
+        <ul>
+          <li><b>Как добавить событие?</b> Нажмите "+" на главном экране приложения.</li>
+          <li><b>Как настроить напоминание?</b> Откройте событие и выберите время напоминания.</li>
+          <li><b>Где хранятся мои данные?</b> Все ваши события хранятся только на устройстве и не передаются третьим лицам.</li>
+        </ul>
+      </div>
+      <div class="contacts">
+        <a href="https://github.com/hotimuchi/happiday/issues" target="_blank">GitHub Issues</a>
+      </div>
+    </div>
+    <div id="support-en" style="display:none">
+      <h1>Happiday Support</h1>
+      <form id="form-en" action="https://formspree.io/f/mwpqbjjy" method="POST">
+        <label for="email-en">Your email for reply</label>
+        <input type="email" id="email-en" name="email" required autocomplete="email" placeholder="example@gmail.com" maxlength="80">
+        <label for="message-en">Your message</label>
+        <textarea id="message-en" name="message" required maxlength="800" placeholder="Describe your problem, feedback, or idea"></textarea>
+        <button type="submit" class="form-btn">Send</button>
+      </form>
+      <div class="thanks-block" id="thanks-en">Thank you! Your message has been sent.</div>
+      <div class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+        <ul>
+          <li><b>How do I add an event?</b> Tap the "+" button on the main screen.</li>
+          <li><b>How do I set a reminder?</b> Open the event and select the reminder time.</li>
+          <li><b>Where are my data stored?</b> All your events are stored only on your device and never shared with third parties.</li>
+        </ul>
+      </div>
+      <div class="contacts">
+        <a href="https://github.com/hotimuchi/happiday/issues" target="_blank">GitHub Issues</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Language switcher
+    const ruBtn = document.getElementById('ruBtn');
+    const enBtn = document.getElementById('enBtn');
+    const ruDiv = document.getElementById('support-ru');
+    const enDiv = document.getElementById('support-en');
+    ruBtn.onclick = () => {
+      ruBtn.classList.add('active'); enBtn.classList.remove('active');
+      ruDiv.style.display = ''; enDiv.style.display = 'none';
+    }
+    enBtn.onclick = () => {
+      enBtn.classList.add('active'); ruBtn.classList.remove('active');
+      enDiv.style.display = ''; ruDiv.style.display = 'none';
+    }
+    // Form submit (RU)
+    document.getElementById('form-ru').onsubmit = function(e) {
+      e.preventDefault();
+      fetch(this.action, {
+        method: "POST",
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('thanks-ru').style.display = '';
+          this.reset();
+        }
+      });
+    }
+    // Form submit (EN)
+    document.getElementById('form-en').onsubmit = function(e) {
+      e.preventDefault();
+      fetch(this.action, {
+        method: "POST",
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('thanks-en').style.display = '';
+          this.reset();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
