@@ -41,7 +41,7 @@ class _CalendarState extends State<Calendar> {
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
               initialDateTime: _focusedDay,
-              minimumDate: DateTime(2000, 1),
+              minimumDate: DateTime(1900, 1),
               maximumDate: DateTime(2100, 12),
               onDateTimeChanged: (DateTime newDate) {
                 setState(() {
