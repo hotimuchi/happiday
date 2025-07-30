@@ -13,6 +13,9 @@ import '../../features/settings/domain/repositories/settings_repository.dart';
 import '../../features/settings/domain/usecase/delete_all_birthdays_usecase.dart';
 import '../../features/settings/presentation/cubit/delete_birthdays_cubit/delete_birthdays_cubit.dart';
 import '../notifications/local_notification_service.dart';
+import '../../features/settings/presentation/cubit/language_cubit/language_cubit.dart';
+import '../../features/settings/presentation/cubit/theme_cubit/theme_cubit.dart';
+import '../../features/calendar/presentation/cubit/calendar_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -64,5 +67,11 @@ Future<void> init() async {
       sl<LocalNotificationService>(),
       sl<SettingsRepository>(),
     ),
+  );
+
+  sl.registerLazySingleton<ThemeCubit>(() => ThemeCubit());
+  sl.registerLazySingleton<LanguageCubit>(() => LanguageCubit());
+  sl.registerLazySingleton<CalendarCubit>(
+    () => CalendarCubit(sl<GetAllBirthdaysUseCase>()),
   );
 }
